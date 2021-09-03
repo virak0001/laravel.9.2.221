@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('body')
-<div class="text-center">
-    <h6 class="heading">Categories list</h6>
+<div class="text-center d-flex justify-content-between">
+    <h6 class="heading" style="margin-left: 40%;">Categories list</h6>
     <button type="button" class="btn_add_category btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa fa-plus"></i>
     </button>
@@ -9,9 +9,13 @@
 <div class="mt-4 justify-content-center">
     <div class="row g-0">
         @foreach ($categories as $category)
-        <div class="col-md-4">
-            <div class="cards">
-                <div class="first bg-white p-4 text-center">
+        <div class="col-md-6 p-1">
+            <div class="cards bg-white p-1">
+                <div style="font-size: 0.5rem;" class="d-flex justify-content-end">
+                    <i class="fas fa-pen fa-2x text-primary" style="margin-right: 5;"></i>
+                    <i class="fas fa-trash fa-2x text-danger" style="margin-right: 5;"></i>
+                </div>
+                <div class="first p-1 text-center">
                     <h5>{{ $category->name }}</h5>
                     <p class="line1">{{ $category->description }}</p>
                 </div>
@@ -56,8 +60,7 @@
     }
 
     .cards:hover {
-        box-shadow: 5px 6px 6px 2px #e9ecef;
-        transform: scale(1.1)
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
     }
 
     .heading {
