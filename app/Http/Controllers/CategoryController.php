@@ -82,9 +82,22 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $category)
     {
-        //
+        $category = Category::find($category);
+        $validator = Validator::make($request->all(), [
+                'name' => 'required|max:50|min:2',
+                'description' => 'required|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $category -> name = $request -> get('name');
+        $category -> description = $request -> get('description');
+        $category -> save();
+        return redirect()->back();
     }
 
     /**
@@ -93,8 +106,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(    $category)
     {
-        //
+        $category = Category::find($category);
+        $category -> delete();
+        return redirect()->back();
     }
 }
