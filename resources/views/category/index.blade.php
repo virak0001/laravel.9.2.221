@@ -12,7 +12,7 @@
         <div class="col-md-4 p-1">
             <div class="cards bg-white p-1">
                 <div style="font-size: 0.5rem;" class="d-flex justify-content-end">
-                    <i class="fas fa-pen fa-2x text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$category->id}}" style="margin-right: 5;"></i>
+                    <i class="fas fa-pen fa-2x text-primary" data-bs-toggle="modal" data-bs-target="#editModal{{$category->id}}" style="margin-right: 5;"></i>
                     <i class="fas fa-trash fa-2x text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$category->id}}" style="margin-right: 5;"></i>
                 </div>
                 <div class="first p-1 text-center">
@@ -45,7 +45,7 @@
         </div>
         <!-- End modale delete category -->
         <!-- Modale update category -->
-        <div class="modal right fade" id="exampleModal{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal right fade" id="editModal{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
