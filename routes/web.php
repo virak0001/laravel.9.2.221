@@ -15,6 +15,7 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::resource('/categories', 'CategoryController');
+Route::resource('/posts', 'PostController');
 Route::get('/', function () {
     return view('welcome');
 });
