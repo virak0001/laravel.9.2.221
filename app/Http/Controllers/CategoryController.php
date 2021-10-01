@@ -106,7 +106,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(    $category)
+    public function destroy($category)
     {
         $category = Category::find($category);
         $category -> delete();
