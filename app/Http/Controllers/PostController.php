@@ -85,9 +85,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -97,9 +99,31 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $post)
     {
-        //
+        $post = Post::find($post);
+        if ($request->picture != null) {
+            request()->validate([
+                'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = time() . '.' . request()->picture->getClientOriginalExtension();
+            request()->picture->move(public_path('/upload/'), $imageName);
+            $post->picture = $imageName;
+        }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:50|min:2',
+            'description' => 'required|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $post -> title = $request -> get('title');
+        $post -> description = $request -> get('description');
+        $post -> category_id = $request -> get('category_id');
+        $post -> save();
+        return redirect('/posts');
     }
 
     /**

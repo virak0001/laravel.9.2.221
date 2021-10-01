@@ -20,6 +20,7 @@
             <td>{{ $post->description }}</td>
             <td>{{ $post->category_name }}</td>
             <td><i class="fas fa-trash fa-2x text-danger" data-bs-toggle="modal" data-bs-target="#deletePost{{$post->id}}" style="margin-right: 5;"></i></td>
+            <td> <a href="{{route('posts.edit', $post->id)}}"><span class="material-icons"><i class="fas fa-pen fa-2x text-danger" style="margin-right: 5;"></i></td></span></a></td>
         </tr>
         <!-- Modale delete category -->
         <div class="modal right fade" id="deletePost{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
