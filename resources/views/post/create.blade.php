@@ -14,7 +14,9 @@
   </div>
   <select class="form-select form-select-sm" name="category_id" aria-label=".form-select-sm example">
     <option selected>Choose category</option>
-    <option value="1">Three</option>
+    @foreach ($categories as $category)
+    <option value="{{$category->id}}">{{ $category->name }}</option>
+    @endforeach
   </select>
   <div>
     <input class="form-control form-control-lg" name="picture" type="file">
