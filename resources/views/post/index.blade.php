@@ -12,7 +12,7 @@
         <tbody>
         @foreach ($posts as $post)
             <tr>
-                <td>{{ $post->picture }}</td>
+                <td><img src="{{asset('upload/'.$post->picture)}}" width="100" style="border-radius: 25px;" height="100" alt="User" /></td>
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->description }}</td>
                 <td>{{ $post->category_name }}</td>
